@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apuntes Masterclass · Codelco</title>
+<title>Apuntes Estratégicos · Codelco 2030</title>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -16,266 +16,176 @@
     --gray-700: #5f6368;
     --blue: #1a73e8;
     --blue-hover: #174ea6;
-    --blue-light: #e8f0fe;
+    --copper: #d97706; /* Color temático Minería/Codelco */
     --radius-lg: 28px;
     --radius-md: 16px;
-    --radius-sm: 8px;
-    --shadow-sm: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-    --shadow-md: 0 4px 8px 3px rgba(60,64,67,0.15), 0 1px 3px rgba(60,64,67,0.3);
+    --shadow-md: 0 4px 8px 3px rgba(60,64,67,0.15);
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'Roboto', sans-serif;
     background: var(--white);
     color: var(--ink);
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV JERARQUIZADA ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
-    padding: 0 40px;
-    height: 72px;
+    padding: 0 40px; height: 72px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--gray-200);
   }
   
-  .nav-tag {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 14px; font-weight: 500;
-    color: var(--gray-700);
-    letter-spacing: 0.25px;
-  }
+  .nav-tag { font-family: 'Google Sans', sans-serif; font-size: 14px; color: var(--gray-700); }
 
-  /* ── HERO: FOCO PRINCIPAL ── */
   .hero {
-    padding: 100px 40px 80px;
+    padding: 80px 40px;
     max-width: 900px; margin: 0 auto;
-    text-align: center;
+    text-align: left;
   }
   .hero-eyebrow {
     font-family: 'Google Sans', sans-serif;
-    font-size: 14px; font-weight: 700; color: var(--blue);
-    letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 16px;
+    font-size: 14px; font-weight: 700; color: var(--copper);
+    letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px;
   }
   .hero h1 {
     font-family: 'Google Sans Display', sans-serif;
-    font-size: clamp(40px, 6vw, 64px);
-    font-weight: 700; line-height: 1.1;
-    letter-spacing: -1px; color: var(--ink);
-    margin-bottom: 32px;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700; line-height: 1.1; color: var(--ink);
+    margin-bottom: 24px;
   }
-  .hero h1 span { color: var(--blue); }
   .hero-sub {
-    font-size: 20px; color: var(--gray-700);
-    line-height: 1.6; max-width: 700px; margin: 0 auto 48px;
-    font-weight: 300;
+    font-size: 22px; color: var(--gray-700);
+    font-weight: 300; margin-bottom: 40px;
   }
 
-  /* ── SECCIONES: JERARQUÍA DE LECTURA ── */
-  section {
-    max-width: 1000px; margin: 0 auto;
-    padding: 80px 40px;
-  }
+  section { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+
   .section-label {
     font-family: 'Google Sans', sans-serif;
-    font-size: 12px; font-weight: 700;
-    color: var(--gray-500); letter-spacing: 1.5px;
-    text-transform: uppercase; margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 36px; font-weight: 700;
-    color: var(--ink); margin-bottom: 48px;
-    letter-spacing: -0.5px;
+    font-size: 12px; font-weight: 700; color: var(--gray-500);
+    text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;
   }
 
-  /* ── TARJETAS MATERIAL YOU ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  .card {
-    background: var(--gray-50);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    transition: background 0.3s ease;
-  }
-  .card:hover { background: var(--gray-100); }
-  .card-icon {
-    font-size: 32px; margin-bottom: 24px; display: block;
-  }
-  .card h3 {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 20px; font-weight: 700;
-    margin-bottom: 12px; color: var(--ink);
-  }
-  .card p {
-    font-size: 15px; color: var(--gray-700);
-    line-height: 1.6;
+  /* ── GRID DE CONTENIDO MAESTRO ── */
+  .grid-master {
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px;
   }
 
-  /* ── INSIGHT BANNER (HIGHLIGHT) ── */
-  .insight-banner {
-    background: var(--ink);
-    border-radius: var(--radius-lg);
-    padding: 64px;
-    color: white;
-    margin-bottom: 40px;
+  .content-block { margin-bottom: 40px; }
+  .content-block h3 {
+    font-family: 'Google Sans', sans-serif; font-size: 24px; margin-bottom: 16px; color: var(--ink);
   }
-  .insight-banner h2 {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 40px; line-height: 1.2; margin-bottom: 24px;
-  }
-  .insight-banner h2 strong { color: var(--blue); }
-  .stat-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 32px; margin-top: 48px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 48px;
-  }
-  .stat-number {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 48px; font-weight: 700; color: var(--blue);
-  }
-  .stat-desc { font-size: 14px; opacity: 0.7; }
 
-  /* ── BRIDGE SECTION (ESPECÍFICO CODELCO) ── */
-  .bridge-card {
-    background: var(--blue-light);
-    border-radius: var(--radius-lg);
-    padding: 56px;
+  .highlight-card {
+    background: var(--gray-50); border-left: 4px solid var(--copper);
+    padding: 24px; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-bottom: 20px;
   }
-  .bridge-item {
-    background: white;
-    padding: 24px; border-radius: var(--radius-md);
-    margin-bottom: 16px;
-    box-shadow: var(--shadow-sm);
+
+  /* ── BANNER DE DATOS (COHERENCIA) ── */
+  .data-banner {
+    background: var(--ink); color: white;
+    border-radius: var(--radius-lg); padding: 48px;
+    margin: 40px 0;
   }
-  .bridge-item h4 {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 12px; text-transform: uppercase;
-    color: var(--blue); margin-bottom: 8px; letter-spacing: 1px;
+  .data-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px; margin-top: 32px;
   }
+  .stat h4 { font-family: 'Google Sans Display', sans-serif; font-size: 48px; color: var(--copper); }
+  .stat p { font-size: 14px; opacity: 0.8; }
 
   /* ── FOOTER FIRMA ── */
   footer {
-    padding: 80px 40px;
-    text-align: center;
-    border-top: 1px solid var(--gray-200);
-    background: var(--gray-50);
+    padding: 60px 40px; text-align: center;
+    border-top: 1px solid var(--gray-200); background: var(--gray-50);
   }
-  .footer-signature {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 16px; font-weight: 500; color: var(--ink);
-    margin-bottom: 8px;
-  }
-  .footer-signature span { color: var(--blue); font-weight: 700; }
-  .footer-sub { font-size: 14px; color: var(--gray-500); }
+  .footer-sig { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; }
+  .footer-sig span { color: var(--blue); }
 
-  /* ── BOTÓN ACCIÓN ── */
-  .btn-primary {
-    display: inline-flex; align-items: center;
-    background: var(--blue); color: white;
-    padding: 16px 32px; border-radius: 100px;
-    text-decoration: none; font-weight: 500;
-    font-family: 'Google Sans', sans-serif;
-    transition: transform 0.2s, background 0.2s;
-  }
-  .btn-primary:hover {
-    background: var(--blue-hover);
-    transform: scale(1.02);
-  }
-
-  @media (max-width: 768px) {
-    .insight-banner { padding: 32px; }
-    .stat-grid { grid-template-columns: 1fr; }
-    .hero { padding: 60px 20px; }
-  }
+  @media (max-width: 900px) { .grid-master { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-tag">Apuntes para <strong>Codelco</strong></div>
-  <div class="nav-tag">Marzo 2026</div>
+  <div class="nav-tag">Estrategia de Coherencia · <strong>Codelco</strong></div>
+  <div class="nav-tag">Ignacio Gómez</div>
 </nav>
 
 <div class="hero">
-  <div class="hero-eyebrow">Masterclass IE University</div>
-  <h1>De los Terceros Espacios a la <span>Economía de la Pertenencia</span></h1>
-  <p class="hero-sub">Cómo diseñar culturas que aceleren la transformación digital y humana en la minería del futuro.</p>
-  <a href="mailto:ignacio@proqualitas.cl" class="btn-primary">Conversar sobre la Estrategia 2030</a>
+  <div class="hero-eyebrow">Insights Post-Masterclass</div>
+  <h1>De los Espacios de Trabajo a la <span>Cultura de la Pertenencia</span></h1>
+  <p class="hero-sub">Reflexiones estratégicas sobre cómo la economía del acceso y el propósito transforman la productividad en la gran minería.</p>
 </div>
 
 <section>
-  <div class="section-label">Contexto Global</div>
-  <h2 class="section-title">5 Hitos que redefinieron el trabajo</h2>
-  <div class="card-grid">
-    <div class="card">
-      <span class="card-icon">🏠</span>
-      <h3>Airbnb (2008)</h3>
-      <p>La experiencia personal supera a la infraestructura tradicional.</p>
+  <div class="grid-master">
+    <div class="main-content">
+      <div class="section-label">Módulo 1: La Evolución del Espacio</div>
+      <div class="content-block">
+        <h3>La Metamorfosis de la Hospitalidad</h3>
+        <p>Hitos como <strong>Airbnb</strong> y <strong>WeWork</strong> nos enseñaron que el valor ya no reside en la propiedad del activo, sino en la <strong>memoria compartida</strong> y la pertenencia. En Codelco, el desafío no es solo la infraestructura de faena, sino convertir esos entornos en "Cuartos Espacios" donde el trabajador no solo opera, sino que co-crea.</p>
+      </div>
+
+      <div class="section-label">Módulo 2: El Factor Humano en la Transformación</div>
+      <div class="content-block">
+        <h3>Suturar la Brecha de Implementación</h3>
+        <div class="highlight-card">
+          <p><strong>El Dolor:</strong> Mientras Codelco invierte US$ 5.073 millones en proyectos estructurales (Rajo Inca, Andes Norte), la agilidad de implementación cultural suele estancarse en un <strong>35%</strong>. La tecnología avanza, pero los hábitos operativos permanecen anclados al pasado.</p>
+        </div>
+        <p>La Masterclass reveló que el 70% de las transformaciones fallan por falta de "vínculo emocional". La solución reside en la <strong>Coherencia Organizacional</strong>: alinear lo que el Directorio declara con lo que el supervisor de primera línea ejecuta en turno.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="card-icon">🏢</span>
-      <h3>WeWork (2010)</h3>
-      <p>El auge de la comunidad y la colaboración fraccionada.</p>
-    </div>
-    <div class="card">
-      <span class="card-icon">🤖</span>
-      <h3>IA y Automatización</h3>
-      <p>La convivencia necesaria entre el talento humano y los agentes digitales.</p>
+
+    <div class="side-content">
+      <div class="section-label">Foco: Codelco 2030</div>
+      <div class="highlight-card" style="background: #fff4e5; border-color: #d97706;">
+        <h4 style="margin-bottom:10px; font-family:'Google Sans'">Desafío: Ley Karin</h4>
+        <p style="font-size:14px;">Más allá del cumplimiento normativo, la oportunidad es redefinir la cultura de respeto en faena para reducir el conflicto laboral y aumentar la legitimidad de los líderes.</p>
+      </div>
+      <div class="highlight-card">
+        <h4 style="margin-bottom:10px; font-family:'Google Sans'">Sostenibilidad</h4>
+        <p style="font-size:14px;">Con la joint venture <strong>Novandino Litio</strong>, la coherencia ética es ahora un activo financiero. El mercado castiga la incoherencia entre el reporte ESG y la realidad operativa.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="background: var(--gray-50);">
-  <div class="insight-banner">
-    <h2>El cambio es radical: de la <strong>Experiencia</strong> a la <strong>Pertenencia</strong></h2>
-    <p>Las organizaciones que no diseñen vínculos y memoria compartida perderán a su talento, sin importar el salario.</p>
-    <div class="stat-grid">
-      <div class="stat-item">
-        <div class="stat-number">70%</div>
-        <div class="stat-desc">de las transformaciones fallan por el factor humano.</div>
+<section style="padding-top:0;">
+  <div class="data-banner">
+    <div class="section-label" style="color:var(--gray-500)">Indicadores de Coherencia Proqualitas</div>
+    <h2>¿Por qué medir la Coherencia?</h2>
+    <div class="data-grid">
+      <div class="stat">
+        <h4>80%</h4>
+        <p>e-NPS alcanzado por organizaciones con alta coherencia operativa.</p>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">60%</div>
-        <div class="stat-desc">nota brechas entre el discurso y la realidad.</div>
+      <div class="stat">
+        <h4>20%</h4>
+        <p>de brecha detectada entre el discurso corporativo y la práctica en terreno.</p>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">5</div>
-        <div class="stat-desc">generaciones conviviendo hoy en faena.</div>
+      <div class="stat">
+        <h4>30</h4>
+        <p>años acompañando a la gran minería (BHP, Codelco, Pelambres).</p>
       </div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="section-label">Aplicación Estratégica</div>
-  <h2 class="section-title">¿Qué significa esto para Codelco?</h2>
-  <div class="bridge-card">
-    <div class="bridge-item">
-      <h4>Fricción en Terreno</h4>
-      <p>La tecnología avanza (Rajo Inca, Andes Norte), pero los mandos medios operan bajo modelos tradicionales. Existe una resistencia sutil que encarece los proyectos estructurales.</p>
-    </div>
-    <div class="bridge-item">
-      <h4>Solución de Coherencia</h4>
-      <p>Aplicar la lógica del "Cuarto Espacio": crear instancias de cocreación donde el trabajador sea protagonista del cambio. Pasar de la capacitación puntual al acompañamiento sostenido.</p>
-    </div>
-  </div>
+  <div class="section-label">Conclusión Estratégica</div>
+  <h2 style="font-family:'Google Sans Display'; margin-bottom:24px;">El camino hacia la Excelencia Operacional</h2>
+  <p>La masterclass de la <strong>IE University</strong> nos dejó una lección clara: en un mundo de soledad y digitalización extrema, la <strong>pertenencia</strong> es el único motor de retención real. Para Codelco, esto significa dotar a los mandos medios de herramientas de <strong>Liderazgo 4D</strong> que aseguren que el propósito de la empresa se respire a 500km de Santiago, en cada subestación y cada túnel.</p>
 </section>
 
 <footer>
-  <p class="footer-signature">Contenido creado por <span>Ignacio Gómez</span></p>
-  <p class="footer-sub">Business Partner en Proqualitas · 30 años acompañando la gran minería</p>
+  <p class="footer-sig">Contenido creado por <span>Ignacio Gómez</span></p>
+  <p style="color:var(--gray-500); font-size:14px; margin-top:8px;">Business Partner en Proqualitas · Acompañando la transformación de Codelco</p>
 </footer>
 
 </body>
