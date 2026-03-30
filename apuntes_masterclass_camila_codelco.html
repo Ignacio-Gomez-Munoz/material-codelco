@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apuntes Masterclass · Camila Medel</title>
+<title>Apuntes Masterclass · Codelco</title>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -15,18 +15,13 @@
     --gray-500: #9aa0a6;
     --gray-700: #5f6368;
     --blue: #1a73e8;
+    --blue-hover: #174ea6;
     --blue-light: #e8f0fe;
-    --green: #137333;
-    --green-light: #e6f4ea;
-    --yellow: #f29900;
-    --yellow-light: #fef7e0;
-    --red: #c5221f;
-    --red-light: #fce8e6;
-    --radius: 16px;
+    --radius-lg: 28px;
+    --radius-md: 16px;
     --radius-sm: 8px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-sm: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    --shadow-md: 0 4px 8px 3px rgba(60,64,67,0.15), 0 1px 3px rgba(60,64,67,0.3);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,601 +30,252 @@
     font-family: 'Roboto', sans-serif;
     background: var(--white);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ── */
+  /* ── NAV JERARQUIZADA ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-200);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
     padding: 0 40px;
-    height: 64px;
+    height: 72px;
     display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--gray-200);
   }
-  .nav-logo {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 18px; font-weight: 700;
-    color: var(--ink); text-decoration: none;
-    letter-spacing: -0.3px;
-  }
-  .nav-logo span { color: var(--blue); }
+  
   .nav-tag {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px; font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
     color: var(--gray-700);
-    background: var(--gray-100);
-    padding: 4px 12px; border-radius: 100px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
+    letter-spacing: 0.25px;
   }
 
-  /* ── HERO ── */
+  /* ── HERO: FOCO PRINCIPAL ── */
   .hero {
-    padding: 80px 40px 64px;
-    max-width: 1100px; margin: 0 auto;
+    padding: 100px 40px 80px;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
   }
   .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; color: var(--blue);
-    letter-spacing: 0.5px; text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .hero-eyebrow::before {
-    content: ''; width: 24px; height: 2px;
-    background: var(--blue); border-radius: 2px;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 14px; font-weight: 700; color: var(--blue);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 16px;
   }
   .hero h1 {
     font-family: 'Google Sans Display', sans-serif;
-    font-size: clamp(36px, 5vw, 58px);
-    font-weight: 400; line-height: 1.15;
-    letter-spacing: -1.5px; color: var(--ink);
-    max-width: 700px; margin-bottom: 24px;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -1px; color: var(--ink);
+    margin-bottom: 32px;
   }
-  .hero h1 strong { font-weight: 700; color: var(--blue); }
+  .hero h1 span { color: var(--blue); }
   .hero-sub {
-    font-size: 17px; color: var(--gray-700);
-    max-width: 580px; line-height: 1.7;
-    margin-bottom: 40px;
+    font-size: 20px; color: var(--gray-700);
+    line-height: 1.6; max-width: 700px; margin: 0 auto 48px;
+    font-weight: 300;
   }
-  .hero-meta {
-    display: flex; align-items: center; gap: 20px;
-    flex-wrap: wrap;
-  }
-  .chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 13px; font-weight: 500; color: var(--gray-700);
-  }
-  .chip svg { width: 14px; height: 14px; }
 
-  /* ── DIVIDER ── */
-  .divider { height: 1px; background: var(--gray-200); margin: 0 40px; }
-
-  /* ── SECTION ── */
+  /* ── SECCIONES: JERARQUÍA DE LECTURA ── */
   section {
-    max-width: 1100px; margin: 0 auto;
-    padding: 64px 40px;
+    max-width: 1000px; margin: 0 auto;
+    padding: 80px 40px;
   }
   .section-label {
-    font-size: 12px; font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 12px; font-weight: 700;
     color: var(--gray-500); letter-spacing: 1.5px;
-    text-transform: uppercase; margin-bottom: 12px;
+    text-transform: uppercase; margin-bottom: 16px;
   }
   .section-title {
     font-family: 'Google Sans Display', sans-serif;
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 400; letter-spacing: -0.8px;
-    color: var(--ink); margin-bottom: 40px;
-    line-height: 1.25;
+    font-size: 36px; font-weight: 700;
+    color: var(--ink); margin-bottom: 48px;
+    letter-spacing: -0.5px;
   }
-  .section-title strong { font-weight: 700; }
 
-  /* ── CARD GRID ── */
+  /* ── TARJETAS MATERIAL YOU ── */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
   }
   .card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
-    padding: 28px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: background 0.3s ease;
   }
-  .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
-  }
+  .card:hover { background: var(--gray-100); }
   .card-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; margin-bottom: 16px;
+    font-size: 32px; margin-bottom: 24px; display: block;
   }
-  .card-icon.blue { background: var(--blue-light); }
-  .card-icon.green { background: var(--green-light); }
-  .card-icon.yellow { background: var(--yellow-light); }
-  .card-icon.red { background: var(--red-light); }
   .card h3 {
     font-family: 'Google Sans', sans-serif;
-    font-size: 16px; font-weight: 700;
-    color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 12px; color: var(--ink);
   }
   .card p {
-    font-size: 14px; color: var(--gray-700); line-height: 1.65;
-  }
-  .card-number {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 13px; font-weight: 700;
-    color: var(--gray-500); margin-bottom: 8px;
-    letter-spacing: 0.5px;
+    font-size: 15px; color: var(--gray-700);
+    line-height: 1.6;
   }
 
-  /* ── INSIGHT BANNER ── */
+  /* ── INSIGHT BANNER (HIGHLIGHT) ── */
   .insight-banner {
-    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
-    border-radius: var(--radius);
-    padding: 48px;
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 64px;
     color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    margin-bottom: 40px;
   }
   .insight-banner h2 {
     font-family: 'Google Sans Display', sans-serif;
-    font-size: clamp(24px, 2.5vw, 34px);
-    font-weight: 400; letter-spacing: -0.8px;
-    line-height: 1.2;
+    font-size: 40px; line-height: 1.2; margin-bottom: 24px;
   }
-  .insight-banner h2 strong { font-weight: 700; }
-  .insight-banner p {
-    font-size: 15px; line-height: 1.7;
-    opacity: 0.88; margin-top: 16px;
-  }
-  .stat-block {
-    display: flex; flex-direction: column; gap: 20px;
-  }
-  .stat-item {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: var(--radius-sm);
-    padding: 20px 24px;
+  .insight-banner h2 strong { color: var(--blue); }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 48px;
   }
   .stat-number {
     font-family: 'Google Sans Display', sans-serif;
-    font-size: 36px; font-weight: 700;
-    letter-spacing: -1px; line-height: 1;
-    margin-bottom: 4px;
+    font-size: 48px; font-weight: 700; color: var(--blue);
   }
-  .stat-desc { font-size: 13px; opacity: 0.8; line-height: 1.5; }
+  .stat-desc { font-size: 14px; opacity: 0.7; }
 
-  /* ── TABLE-LIKE COMPARISON ── */
-  .compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .compare-card {
-    border-radius: var(--radius);
-    padding: 32px;
-  }
-  .compare-card.old {
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-  }
-  .compare-card.new {
-    background: var(--blue-light);
-    border: 1px solid rgba(26,115,232,0.2);
-  }
-  .compare-label {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    margin-bottom: 16px;
-    color: var(--gray-500);
-  }
-  .compare-card.new .compare-label { color: var(--blue); }
-  .compare-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    margin-bottom: 12px; font-size: 14px; color: var(--gray-700);
-    line-height: 1.5;
-  }
-  .compare-card.new .compare-item { color: var(--ink); }
-  .compare-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    margin-top: 6px; flex-shrink: 0;
-    background: var(--gray-500);
-  }
-  .compare-card.new .compare-dot { background: var(--blue); }
-
-  /* ── CODELCO BRIDGE ── */
+  /* ── BRIDGE SECTION (ESPECÍFICO CODELCO) ── */
   .bridge-card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
-    padding: 40px;
-  }
-  .bridge-grid {
-    display: grid;
-    grid-template-columns: 1fr 48px 1fr;
-    gap: 0; align-items: center;
-    margin-top: 28px;
-  }
-  .bridge-col { padding: 0 8px; }
-  .bridge-arrow {
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gray-500); font-size: 24px;
+    background: var(--blue-light);
+    border-radius: var(--radius-lg);
+    padding: 56px;
   }
   .bridge-item {
     background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    font-size: 14px; line-height: 1.5; color: var(--ink);
-  }
-  .bridge-item.highlight {
-    border-color: var(--blue);
-    background: var(--blue-light);
-  }
-  .bridge-item .label-sm {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--gray-500); display: block; margin-bottom: 4px;
-  }
-  .bridge-item.highlight .label-sm { color: var(--blue); }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    background: var(--gray-50);
-    border-top: 1px solid var(--gray-200);
-    padding: 64px 40px;
-    text-align: center;
-  }
-  .cta-inner { max-width: 600px; margin: 0 auto; }
-  .cta-section h2 {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: clamp(22px, 2.5vw, 30px);
-    font-weight: 400; letter-spacing: -0.5px;
+    padding: 24px; border-radius: var(--radius-md);
     margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
   }
-  .cta-section p {
-    font-size: 16px; color: var(--gray-700);
-    margin-bottom: 32px; line-height: 1.7;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue); color: white;
+  .bridge-item h4 {
     font-family: 'Google Sans', sans-serif;
-    font-size: 15px; font-weight: 500;
-    padding: 12px 28px; border-radius: 100px;
-    text-decoration: none;
-    transition: background 0.2s, box-shadow 0.2s;
-    box-shadow: var(--shadow);
+    font-size: 12px; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 8px; letter-spacing: 1px;
+  }
+
+  /* ── FOOTER FIRMA ── */
+  footer {
+    padding: 80px 40px;
+    text-align: center;
+    border-top: 1px solid var(--gray-200);
+    background: var(--gray-50);
+  }
+  .footer-signature {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .footer-signature span { color: var(--blue); font-weight: 700; }
+  .footer-sub { font-size: 14px; color: var(--gray-500); }
+
+  /* ── BOTÓN ACCIÓN ── */
+  .btn-primary {
+    display: inline-flex; align-items: center;
+    background: var(--blue); color: white;
+    padding: 16px 32px; border-radius: 100px;
+    text-decoration: none; font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    transition: transform 0.2s, background 0.2s;
   }
   .btn-primary:hover {
-    background: #1557b0;
-    box-shadow: var(--shadow-md);
-  }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent;
-    color: var(--blue);
-    font-family: 'Google Sans', sans-serif;
-    font-size: 15px; font-weight: 500;
-    padding: 12px 24px; border-radius: 100px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .btn-ghost:hover { background: var(--blue-light); }
-  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--gray-200);
-    padding: 24px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
-  }
-  .footer-brand {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 13px; color: var(--gray-700);
-    font-weight: 500;
-  }
-  .footer-brand span { color: var(--blue); font-weight: 700; }
-  .footer-note { font-size: 12px; color: var(--gray-500); }
-
-  /* ── QUOTE BLOCK ── */
-  .quote-block {
-    border-left: 3px solid var(--blue);
-    padding: 20px 28px;
-    background: var(--blue-light);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin: 32px 0;
-  }
-  .quote-text {
-    font-family: 'Google Sans Display', sans-serif;
-    font-size: 18px; font-weight: 400;
-    color: var(--ink); line-height: 1.6;
-    letter-spacing: -0.2px;
-  }
-  .quote-source {
-    font-size: 13px; color: var(--gray-700);
-    margin-top: 10px; font-weight: 500;
+    background: var(--blue-hover);
+    transform: scale(1.02);
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .hero, section { padding: 48px 20px; }
-    .divider { margin: 0 20px; }
-    footer { padding: 20px; }
-    .insight-banner { grid-template-columns: 1fr; padding: 32px; }
-    .compare-grid { grid-template-columns: 1fr; }
-    .bridge-grid { grid-template-columns: 1fr; }
-    .bridge-arrow { transform: rotate(90deg); margin: 8px 0; }
-    .cta-section { padding: 48px 20px; }
+    .insight-banner { padding: 32px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .hero { padding: 60px 20px; }
   }
-
-  /* ── FADE-IN ANIMATION ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero, section { animation: fadeUp 0.5s ease both; }
-  section:nth-child(2) { animation-delay: 0.05s; }
-  section:nth-child(3) { animation-delay: 0.1s; }
-  section:nth-child(4) { animation-delay: 0.15s; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">pro<span>qualitas</span></a>
-  <span class="nav-tag">Apuntes para Camila Medel · Codelco</span>
+  <div class="nav-tag">Apuntes para <strong>Codelco</strong></div>
+  <div class="nav-tag">Marzo 2026</div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Masterclass IE University · Club 50, Las Condes</div>
-  <h1>De los Terceros Espacios a la<br><strong>Economía de la Pertenencia</strong></h1>
-  <p class="hero-sub">
-    Lo que vimos en la masterclass tiene una lectura directa para los desafíos de Codelco hoy. 
-    Aquí están los apuntes clave — y por qué son relevantes para tu área.
-  </p>
-  <div class="hero-meta">
-    <span class="chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Marzo 2026
-    </span>
-    <span class="chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Expositora: Cristina — IE University
-    </span>
-    <span class="chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      Para equipos en transformación
-    </span>
-  </div>
+  <div class="hero-eyebrow">Masterclass IE University</div>
+  <h1>De los Terceros Espacios a la <span>Economía de la Pertenencia</span></h1>
+  <p class="hero-sub">Cómo diseñar culturas que aceleren la transformación digital y humana en la minería del futuro.</p>
+  <a href="mailto:ignacio@proqualitas.cl" class="btn-primary">Conversar sobre la Estrategia 2030</a>
 </div>
 
-<div class="divider"></div>
-
-<!-- SECTION 1: 5 Hitos -->
 <section>
-  <div class="section-label">Módulo 1</div>
-  <h2 class="section-title">Los 5 hitos que <strong>redefinieron</strong> cómo vivimos y trabajamos</h2>
+  <div class="section-label">Contexto Global</div>
+  <h2 class="section-title">5 Hitos que redefinieron el trabajo</h2>
   <div class="card-grid">
     <div class="card">
-      <div class="card-number">01</div>
-      <div class="card-icon blue">🏠</div>
+      <span class="card-icon">🏠</span>
       <h3>Airbnb (2008)</h3>
-      <p>Pasamos de ir a un hotel a <em>habitar la vida de otro</em>. Primer síntoma de que la experiencia importa más que la infraestructura.</p>
+      <p>La experiencia personal supera a la infraestructura tradicional.</p>
     </div>
     <div class="card">
-      <div class="card-number">02</div>
-      <div class="card-icon green">🏢</div>
+      <span class="card-icon">🏢</span>
       <h3>WeWork (2010)</h3>
-      <p>El trabajo dejó de ser un edificio corporativo. Aparece la idea de comunidad en el entorno laboral: café, eventos, colaboración fraccionada.</p>
+      <p>El auge de la comunidad y la colaboración fraccionada.</p>
     </div>
     <div class="card">
-      <div class="card-number">03</div>
-      <div class="card-icon yellow">🌐</div>
-      <h3>COVID-19 (2020)</h3>
-      <p>Estandarizó el trabajo remoto. Demostró que la productividad no depende de un espacio centralizado. Las fronteras hogar-trabajo desaparecieron.</p>
-    </div>
-    <div class="card">
-      <div class="card-number">04</div>
-      <div class="card-icon blue">🤖</div>
-      <h3>4ª Revolución Industrial</h3>
-      <p>IA, automatización y cobots conviven con humanos. La "economía naranja" (conocimiento y cultura) reemplaza progresivamente a la cadena de montaje.</p>
-    </div>
-    <div class="card">
-      <div class="card-number">05</div>
-      <div class="card-icon red">👥</div>
-      <h3>Epidemia de Soledad</h3>
-      <p>5 generaciones conviven en los mismos espacios de trabajo. La soledad ya no es exclusiva del adulto mayor: afecta activamente a las generaciones más jóvenes.</p>
+      <span class="card-icon">🤖</span>
+      <h3>IA y Automatización</h3>
+      <p>La convivencia necesaria entre el talento humano y los agentes digitales.</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SECTION 2: Insight Banner -->
-<section>
+<section style="background: var(--gray-50);">
   <div class="insight-banner">
-    <div>
-      <h2>El mundo pasó de la <strong>Economía de la Experiencia</strong><br>a la <strong>Economía de la Pertenencia</strong></h2>
-      <p>
-        La experiencia buscaba el asombro individual. La pertenencia busca algo más difícil: 
-        la relación, el vínculo y la memoria compartida. 
-        Las organizaciones que no diseñen para eso perderán a sus personas — aunque paguen bien.
-      </p>
-    </div>
-    <div class="stat-block">
-      <div class="stat-item">
-        <div class="stat-number">5</div>
-        <div class="stat-desc">generaciones conviviendo simultáneamente en los espacios de trabajo</div>
-      </div>
+    <h2>El cambio es radical: de la <strong>Experiencia</strong> a la <strong>Pertenencia</strong></h2>
+    <p>Las organizaciones que no diseñen vínculos y memoria compartida perderán a su talento, sin importar el salario.</p>
+    <div class="stat-grid">
       <div class="stat-item">
         <div class="stat-number">70%</div>
-        <div class="stat-desc">de transformaciones fallan por factores humanos, no tecnológicos</div>
+        <div class="stat-desc">de las transformaciones fallan por el factor humano.</div>
       </div>
       <div class="stat-item">
         <div class="stat-number">60%</div>
-        <div class="stat-desc">de colaboradores percibe brecha entre discurso corporativo y práctica en terreno</div>
+        <div class="stat-desc">nota brechas entre el discurso y la realidad.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-desc">generaciones conviviendo hoy en faena.</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SECTION 3: Terceros vs Cuartos -->
 <section>
-  <div class="section-label">Módulo 3 y 4</div>
-  <h2 class="section-title">Del Tercer Espacio al <strong>Cuarto Espacio</strong></h2>
-  <p style="font-size:15px; color: var(--gray-700); max-width:620px; margin-bottom:32px; line-height:1.7;">
-    Ray Oldenburg (1989) definió los <em>Terceros Espacios</em> como los lugares neutros de socialización comunal: 
-    la peluquería, el café, la plaza. Hoy estamos ante su evolución.
-  </p>
-
-  <div class="compare-grid">
-    <div class="compare-card old">
-      <div class="compare-label">Tercer Espacio · Modelo anterior</div>
-      <div class="compare-item"><span class="compare-dot"></span>Neutral e inclusivo: todos son bienvenidos</div>
-      <div class="compare-item"><span class="compare-dot"></span>La conversación como actividad principal</div>
-      <div class="compare-item"><span class="compare-dot"></span>Accesible y familiar, "como en casa"</div>
-      <div class="compare-item"><span class="compare-dot"></span>Serendipia: la sorpresa como motor</div>
-      <div class="compare-item"><span class="compare-dot"></span>Enfocado en el individuo y su experiencia</div>
-    </div>
-    <div class="compare-card new">
-      <div class="compare-label">Cuarto Espacio · Modelo emergente</div>
-      <div class="compare-item"><span class="compare-dot"></span>Diseñado para la relación y la reciprocidad</div>
-      <div class="compare-item"><span class="compare-dot"></span>Busca presencia y participación activa</div>
-      <div class="compare-item"><span class="compare-dot"></span>La métrica es la calidad del vínculo, no el tiempo</div>
-      <div class="compare-item"><span class="compare-dot"></span>Cocreado con los usuarios, no pre-diseñado</div>
-      <div class="compare-item"><span class="compare-dot"></span>Anclado en memoria compartida e historia real</div>
-    </div>
-  </div>
-
-  <div class="quote-block">
-    <div class="quote-text">
-      "Sin recurrencia, no hay pertenencia. Un restaurante rentable, un hotel de lujo o un coworking sin comunidad real no son Cuartos Espacios."
-    </div>
-    <div class="quote-source">— Cristina, IE University · Masterclass Club 50</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SECTION 4: Codelco Bridge -->
-<section>
-  <div class="section-label">Lectura aplicada</div>
-  <h2 class="section-title">¿Qué significa esto para <strong>Codelco</strong> hoy?</h2>
-  <p style="font-size:15px; color: var(--gray-700); max-width:620px; margin-bottom:32px; line-height:1.7;">
-    Codelco está ejecutando la mayor transformación digital y de automatización de su historia (Estrategia 2030, 
-    Proyectos AP, acuerdo Microsoft IA). El cuello de botella no es la tecnología. 
-    Es la fricción humana en la adopción.
-  </p>
-
+  <div class="section-label">Aplicación Estratégica</div>
+  <h2 class="section-title">¿Qué significa esto para Codelco?</h2>
   <div class="bridge-card">
-    <p style="font-size:14px; color: var(--gray-700); font-weight:500; letter-spacing:0.5px; text-transform:uppercase;">Tensión identificada en terreno</p>
-    <div class="bridge-grid">
-      <div class="bridge-col">
-        <div class="bridge-item">
-          <span class="label-sm">Contexto Codelco</span>
-          Rajo Inca al 94%, Andes Norte al 81%. Inversiones récord de US$5.073 millones en proyectos estructurales.
-        </div>
-        <div class="bridge-item">
-          <span class="label-sm">Fricción detectada</span>
-          Mandos medios que crecieron en culturas de operación tradicional enfrentan nuevas tecnologías sin red de contención cultural.
-        </div>
-        <div class="bridge-item">
-          <span class="label-sm">Riesgo real</span>
-          Resistencia sutil que retrasa cronogramas y encarece proyectos. La tecnología avanza; las personas, no siempre al mismo ritmo.
-        </div>
-      </div>
-      <div class="bridge-arrow">→</div>
-      <div class="bridge-col">
-        <div class="bridge-item highlight">
-          <span class="label-sm">Lectura desde la Masterclass</span>
-          Aplicar la lógica del Cuarto Espacio al entorno operativo: diseñar instancias de cocreación donde los mandos medios sean protagonistas del cambio, no receptores.
-        </div>
-        <div class="bridge-item highlight">
-          <span class="label-sm">Aplicación organizacional</span>
-          Crear "memoria compartida" del cambio: documentar los aprendizajes reales de la faena y convertirlos en capital cultural. Adopción → Hábito → Pertenencia.
-        </div>
-        <div class="bridge-item highlight">
-          <span class="label-sm">El principio clave</span>
-          "Sin recurrencia, no hay pertenencia." La capacitación puntual no cambia culturas. El acompañamiento sostenido en el tiempo, sí.
-        </div>
-      </div>
+    <div class="bridge-item">
+      <h4>Fricción en Terreno</h4>
+      <p>La tecnología avanza (Rajo Inca, Andes Norte), pero los mandos medios operan bajo modelos tradicionales. Existe una resistencia sutil que encarece los proyectos estructurales.</p>
+    </div>
+    <div class="bridge-item">
+      <h4>Solución de Coherencia</h4>
+      <p>Aplicar la lógica del "Cuarto Espacio": crear instancias de cocreación donde el trabajador sea protagonista del cambio. Pasar de la capacitación puntual al acompañamiento sostenido.</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SECTION 5: Cases -->
-<section>
-  <div class="section-label">Casos citados en la Masterclass</div>
-  <h2 class="section-title">Organizaciones que ya <strong>diseñan para la pertenencia</strong></h2>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-icon blue">🎵</div>
-      <h3>Hoteles Musicales (Madrid y São Paulo)</h3>
-      <p>Los huéspedes graban maquetas en estudios propios. Pasan de consumidores pasivos a creadores activos. El vínculo con el espacio se vuelve irrepetible.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon green">☕</div>
-      <h3>Work Café Santander (Chile)</h3>
-      <p>Sucursales bancarias reconvertidas en espacios de comunidad. Elimina la frialdad transaccional. El banco deja de ser un trámite y se convierte en un punto de encuentro.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon yellow">🎨</div>
-      <h3>Ace Hotel (Los Ángeles)</h3>
-      <p>Artistas en residencia convierten habitaciones en estudios. El espacio "responde y se deja habitar". Esto transforma la experiencia colectiva, no solo la individual.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon red">🏛️</div>
-      <h3>Mall Plaza (Chile)</h3>
-      <p>De centro de consumo a centro cívico: Registro Civil, centros médicos, comunidad. Las marcas pueden usar los parámetros del Tercer Espacio como brief para sus comunidades objetivo.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-inner">
-    <h2>¿Conversamos sobre cómo aplicar esto en Codelco?</h2>
-    <p>
-      En Proqualitas llevamos más de 30 años acompañando procesos de transformación cultural en la gran minería 
-      — BHP, Minera Los Pelambres, El Teniente. Me encantaría compartirte cómo el <strong>Modelo 3A®</strong> 
-      convierte la implementación técnica en hábito operativo real.
-    </p>
-    <div class="btn-row">
-      <a href="mailto:ignacio@proqualitas.cl" class="btn-primary">
-        Agendar 20 minutos
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#" class="btn-ghost">Ver más sobre Gestión del Cambio →</a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><span>Proqualitas</span> · Desarrollo Organizacional y People Management</div>
-  <div class="footer-note">Apuntes preparados especialmente para Camila Medel · Codelco · Marzo 2026</div>
+  <p class="footer-signature">Contenido creado por <span>Ignacio Gómez</span></p>
+  <p class="footer-sub">Business Partner en Proqualitas · 30 años acompañando la gran minería</p>
 </footer>
 
 </body>
